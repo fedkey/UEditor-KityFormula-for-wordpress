@@ -15,8 +15,27 @@
 + 关闭字数显示；
 + 关闭抓取远程图片；
 
-Ueditor1.4.3.3 + KityFormula数学公式编辑
+Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 
-最后更新时间：2016-11-6
 
-安装说明：http://www.yangshengliang.com/kaiyuan-shijie/zuopin/399.html
+## 更新记录：
+
+### 版本： 2.0.1        2016-11-6发布
+
+### 版本： 2.0.2	   2017-02-23发布
+自从UEditor-KityFormula-for-wordpress 2.0.1版本发布以来，用户反应较好，对某些使用者提出的没有百度地图、google地图及iframe,2.0.2版本进行了补充。现已发布，不过谷歌地图由于某些原因，国内应用不了，需要使用vpn，建议使用百度地图。
+
+说明：http://www.yangshengliang.com/kaiyuan-shijie/zuopin/678.html
+
+### 安装方法
+一：git方式
+
+1. 切换到wordpress根目录
+2. git clone http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress wp-content/plugins/UEditor-KityFormula-for-wordpress
+3.到网站后台启用 [UEditor-KityFormula-for-wordpress] 插件
+
+二：zip方式
+1. 访问： http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress 左上角找到 zip下载按钮
+![zip压缩包下载指南](http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress/blob/ee026edcdee559bf4c8d034c6df759f9d89b1e07/install-git-zip.png)
+2. 登陆wordpress后台，用上传插件的方式进行安装，并启用。
+
