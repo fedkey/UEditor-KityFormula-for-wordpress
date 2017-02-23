@@ -30,9 +30,9 @@ Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 ### 安装方法
 #### 一：git方式
 
-1. 切换到wordpress网站根目录<br >
-2. git clone http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress wp-content/plugins/UEditor-KityFormula-for-wordpress<br >
-3.到网站后台启用 [UEditor-KityFormula-for-wordpress] 插件<br >
+1. 切换到wordpress网站根目录
+2. git clone http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress wp-content/plugins/UEditor-KityFormula-for-wordpress
+3. 到网站后台启用 [UEditor-KityFormula-for-wordpress] 插件
 
 #### 二：zip方式
 1. 访问： http://git.oschina.net/fedkey/UEditor-KityFormula-for-wordpress 左上角找到 zip下载按钮,如下图所示：
