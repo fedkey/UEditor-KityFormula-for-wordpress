@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: UEditor-KityFormula
+ * Plugin Name: UEditor-KityFormula for wordpress
  * Plugin URI: http://www.yangshengliang.com
  * Description: 百度开源富文本编辑器UEditor-KityFormula for wordpress！此插件最早由taoqili开发，SamLiu改进,两位作者均不再发布更新版本，大山在其基础上更新到1.4.3版本，bmqy沿用更新至1.4.3.3。jinaYang在前几位的基础上,添加了百度数学公式插件kityformula,使之进一步完善。
  * Version: 2.0.2
