@@ -1,4 +1,4 @@
-# 插件名称：UEditor-KityFormula for wordpress
+<b>插件名称：</b>UEditor-KityFormula for wordpress
 
 # 提醒
 此版本为免费wordpress插件，纯免费使用不存在任何费用，任何人不得以付费形式提供给其他人。
@@ -26,11 +26,11 @@ Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 ### 版本：  2.0.3 		发布时间：2017-12-10
 
 #### 更新/修复内容
-1、开放所有的按钮<br />
-2、解决上传视频文件，视频地址被清空的bug<br />
-3、解决无法使用iframe问题<br />
-4、解决百度动态地图无法插入<br />
-5、随百度ueditor官方修复了一些漏洞<br />
+1. 开放所有的按钮<br />
+2. 解决上传视频文件，视频地址被清空的bug<br />
+3. 解决无法使用iframe问题<br />
+4. 解决百度动态地图无法插入<br />
+5. 随百度ueditor官方修复了一些漏洞<br />
 
 ### 安装方法
 #### 一：git方式
