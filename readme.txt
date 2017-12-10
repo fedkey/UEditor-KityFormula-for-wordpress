@@ -13,3 +13,5 @@ UEditor-KityFormula for wordpress基于Ueditor,UEditor 是由百度「FEX前端�
     文字编辑功能
     添加百度地图
     集成KityFormula,可轻松添加各式数学公式
+
+详情见：README.md
