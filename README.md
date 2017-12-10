@@ -1,7 +1,7 @@
 ### UEditor-KityFormula for wordpress
-** 分类：后台编辑器
-** 开发语言： php
-** 开放协议：GPLv2
+* 分类：后台编辑器
+* 开发语言： php
+* 开放协议：GPLv2
 
 # 提醒
 此版本为免费wordpress插件，纯免费使用不存在任何费用，任何人不得以付费形式提供给其他人。
