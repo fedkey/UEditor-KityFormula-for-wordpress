@@ -25,7 +25,6 @@
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
     window.UEDITOR_CONFIG = {
-
         //为编辑器实例添加一个路径，这个不能被注释
         UEDITOR_HOME_URL: URL
 
@@ -33,7 +32,8 @@
         , serverUrl: URL + "php/controller.php"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
-        , toolbars: [['fullscreen', 'source', '|', 'undo', 'redo', '|',
+        , toolbars: [[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
             'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
             'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
             'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
@@ -43,7 +43,7 @@
             'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
             'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
             'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-            'print', 'preview', 'searchreplace', 'drafts', 'help','kityformula',
+            'print', 'preview', 'searchreplace', 'drafts', 'help'
         ]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
@@ -293,7 +293,7 @@
         //,toolbarTopOffset:400
 
         //设置远程图片是否抓取到本地保存
-        //,catchRemoteImageEnable: true //设置是否抓取远程图片
+        ,catchRemoteImageEnable: true //设置是否抓取远程图片
 
         //pageBreakTag
         //分页标识符,默认是_ueditor_page_break_tag_
@@ -321,7 +321,7 @@
 
         //tableDragable
         //表格是否可以拖拽
-        //,tableDragable: true
+        ,tableDragable: true
 
 
 
@@ -399,7 +399,10 @@
 			header: [],
 			hr:     [],
 			i:      ['class', 'style'],
-			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex'],
+			//阻止iframe被清理、百度地图无法加入动态地图
+			iframe: ['frameborder','border','marginwidth','marginheight','width','height','src','id'],
+			//增加_url，防止视频地址被清空 2017-12-10
+			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex','_url'],
 			ins:    ['datetime'],
 			li:     ['class', 'style'],
 			mark:   [],
