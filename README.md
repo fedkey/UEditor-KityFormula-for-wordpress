@@ -33,7 +33,7 @@ Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 2. 解决上传视频文件，视频地址被清空的bug<br />
 3. 解决无法使用iframe问题<br />
 4. 解决百度动态地图无法插入<br />
-5. 随百度ueditor官方修复了一些漏洞<br />
+5. 随百度ueditor官方修复了一些安全漏洞<br />
 
 ### 安装方法
 #### 一：git方式
