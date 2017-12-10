@@ -25,6 +25,7 @@
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
     window.UEDITOR_CONFIG = {
+
         //为编辑器实例添加一个路径，这个不能被注释
         UEDITOR_HOME_URL: URL
 
@@ -293,7 +294,7 @@
         //,toolbarTopOffset:400
 
         //设置远程图片是否抓取到本地保存
-        ,catchRemoteImageEnable: true //设置是否抓取远程图片
+        //,catchRemoteImageEnable: true //设置是否抓取远程图片
 
         //pageBreakTag
         //分页标识符,默认是_ueditor_page_break_tag_
@@ -321,7 +322,7 @@
 
         //tableDragable
         //表格是否可以拖拽
-        ,tableDragable: true
+        //,tableDragable: true
 
 
 
@@ -403,6 +404,8 @@
 			iframe: ['frameborder','border','marginwidth','marginheight','width','height','src','id'],
 			//增加_url，防止视频地址被清空 2017-12-10
 			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex','_url'],
+			//增加插入视频  2017-10-2 yangshengliang.com 
+            insertvideo:['url', 'id', 'width', 'height'],
 			ins:    ['datetime'],
 			li:     ['class', 'style'],
 			mark:   [],
