@@ -1,6 +1,6 @@
 ### 基本信息
-
-** 名称: UEditor-KityFormula for wordpress** 
+ **
+名称: UEditor-KityFormula for wordpress** 
 * 分类：后台编辑器
 * 开发语言： php
 * 开放协议：GPLv2 or later
