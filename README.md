@@ -16,6 +16,7 @@ UEditor-KityFormula for wordpress基于Ueditor,UEditor 是由百度「FEX前端�
  ** 版本： 2.0.1            2016-11-6发布**
 
  ** 版本： 2.0.2           2017-02-23发布**
+
 自从UEditor-KityFormula-for-wordpress 2.0.1版本发布以来，用户反应较好，对某些使用者提出的没有百度地图、google地图及iframe,2.0.2版本进行了补充。现已发布，不过谷歌地图由于某些原因，国内应用不了，需要使用vpn，建议使用百度地图。
 
 说明：http://www.yangshengliang.com/kaiyuan-shijie/zuopin/678.html
