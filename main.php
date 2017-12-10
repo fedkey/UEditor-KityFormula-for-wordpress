@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: UEditor-KityFormula for wordpress
- * Plugin URI: http://www.yangshengliang.com
+ * Plugin URI: https://gitee.com/fedkey/UEditor-KityFormula-for-wordpress/
  * Description: 百度开源富文本编辑器,多功能的富文本编辑器,添加了百度数学公式插件kityformula,学生、老师、数学爱好者写博必备。
  * Version: 2.0.3
  * Author: 大山, SamLiu, taoqili, bmqy, fedkey
