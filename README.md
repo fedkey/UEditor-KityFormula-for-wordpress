@@ -1,10 +1,12 @@
-### UEditor-KityFormula for wordpress
+### 基本信息
+
+** 名称: UEditor-KityFormula for wordpress** 
 * 分类：后台编辑器
 * 开发语言： php
-* 开放协议：GPLv2
+* 开放协议：GPLv2 or later
 * 使用场景： wordpress
 
-# 自定义配置
+### 配置
 + 工具栏图标3行显示、并重新整理排序；
 + 工具栏顶部间距32px；
 + 编辑器字体大小14px、行高1.8；
@@ -12,19 +14,18 @@
 + 关闭字数显示；
 + 关闭抓取远程图片；
 
-Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 
 
-## 更新记录：
+### 更新历史：
 
-### 版本： 2.0.1        	2016-11-6发布
+ ** 版本： 2.0.1        	2016-11-6发布** 
 
-### 版本： 2.0.2	   	2017-02-23发布
+ ** 版本： 2.0.2	   	2017-02-23发布** 
 自从UEditor-KityFormula-for-wordpress 2.0.1版本发布以来，用户反应较好，对某些使用者提出的没有百度地图、google地图及iframe,2.0.2版本进行了补充。现已发布，不过谷歌地图由于某些原因，国内应用不了，需要使用vpn，建议使用百度地图。
 
 说明：http://www.yangshengliang.com/kaiyuan-shijie/zuopin/678.html
 
-### 版本：  2.0.3 		发布时间：2017-12-10
+ ** 版本：  2.0.3 		发布时间：2017-12-10** 
 
 #### 更新/修复内容
 1. 开放所有的按钮<br />
@@ -34,6 +35,7 @@ Ueditor1.4.3.3 + KityFormula数学公式编器for wordpress
 5. 随百度ueditor官方修复了一些安全漏洞<br />
 
 ### 安装方法
+
 #### 一：git方式
 
 1. 切换到wordpress网站根目录
