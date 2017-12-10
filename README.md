@@ -1,4 +1,4 @@
-<b>插件名称：</b>UEditor-KityFormula for wordpress
+### <b>插件名称：</b>UEditor-KityFormula for wordpress
 
 # 提醒
 此版本为免费wordpress插件，纯免费使用不存在任何费用，任何人不得以付费形式提供给其他人。
