@@ -6,7 +6,7 @@ UEditor-KityFormula for wordpress基于Ueditor,UEditor 是由百度「FEX前端�
     分类：后台编辑器
     开发语言： php
     开放协议：GPLv2 or later
-    使用场景： wordpress
+    使用场景： wordpress3.7及更高版本
 
 功能
 
