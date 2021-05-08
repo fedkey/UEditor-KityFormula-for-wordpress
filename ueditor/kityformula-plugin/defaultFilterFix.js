@@ -4,24 +4,26 @@
 UE.plugins['defaultfilter'] = function () {
     var me = this;
     me.setOpt({
-        'allowDivTransToP':true,
-        'disabledTableInTable':true,
-        'rgb2Hex':true
+        'allowDivTransToP': true,
+        'disabledTableInTable': true,
+        'rgb2Hex': true
     });
     //默认的过滤处理
     //进入编辑器的内容处理
     me.addInputRule(function (root) {
         var allowDivTransToP = this.options.allowDivTransToP;
         var val;
-        function tdParent(node){
-            while(node && node.type == 'element'){
-                if(node.tagName == 'td'){
+
+        function tdParent(node) {
+            while (node && node.type == 'element') {
+                if (node.tagName == 'td') {
                     return true;
                 }
                 node = node.parentNode;
             }
             return false;
         }
+
         //进行默认的处理
         root.traversal(function (node) {
             if (node.type == 'element') {
@@ -38,7 +40,7 @@ UE.plugins['defaultfilter'] = function () {
                         node.setAttr({
                             cdata_tag: node.tagName,
                             cdata_data: (node.innerHTML() || ''),
-                            '_ue_custom_node_':'true'
+                            '_ue_custom_node_': 'true'
                         });
                         node.tagName = 'div';
                         node.innerHTML('');
@@ -68,7 +70,7 @@ UE.plugins['defaultfilter'] = function () {
                             }
                         }
                         val = node.getAttr('id');
-                        if(val && /^_baidu_bookmark_/i.test(val)){
+                        if (val && /^_baidu_bookmark_/i.test(val)) {
                             node.parentNode.removeChild(node)
                         }
                         break;
@@ -85,14 +87,14 @@ UE.plugins['defaultfilter'] = function () {
 //
 //                        }
                         //p标签不允许嵌套
-                        UE.utils.each(node.children,function(n){
-                            if(n.type == 'element' && n.tagName == 'p'){
+                        UE.utils.each(node.children, function (n) {
+                            if (n.type == 'element' && n.tagName == 'p') {
                                 var next = n.nextSibling();
-                                node.parentNode.insertAfter(n,node);
+                                node.parentNode.insertAfter(n, node);
                                 var last = n;
-                                while(next){
+                                while (next) {
                                     var tmp = next.nextSibling();
-                                    node.parentNode.insertAfter(next,last);
+                                    node.parentNode.insertAfter(next, last);
                                     last = next;
                                     next = tmp;
                                 }
@@ -104,20 +106,25 @@ UE.plugins['defaultfilter'] = function () {
                         }
                         break;
                     case 'div':
-                        if(node.getAttr('cdata_tag')){
+                        if (node.getAttr('cdata_tag')) {
                             break;
                         }
                         //针对代码这里不处理插入代码的div
                         val = node.getAttr('class');
-                        if(val && /^line number\d+/.test(val)){
+                        if (val && /^line number\d+/.test(val)) {
                             break;
                         }
-                        if(!allowDivTransToP){
+                        if (!allowDivTransToP) {
                             break;
                         }
                         var tmpNode, p = UE.uNode.createElement('p');
                         while (tmpNode = node.firstChild()) {
-                            if (tmpNode.type == 'text' || !UE.dom.UE.dom.dtd.$block[tmpNode.tagName]) {
+                            /**
+                             *  进行一系列判断,防止任何一个环节出错,从而复制粘贴失败 2021-5-8
+                             *  @author fedkey
+                             *  @qq 1535604235
+                             */
+                            if (tmpNode.type == 'text' || !UE.dom || !UE.dom.UE || !UE.dom.UE.dom || !UE.dom.UE.dom.dtd || !UE.dom.UE.dom.dtd.$block || !UE.dom.UE.dom.dtd.$block[tmpNode.tagName]) {
                                 p.appendChild(tmpNode);
                             } else {
                                 if (p.firstChild()) {
@@ -153,13 +160,13 @@ UE.plugins['defaultfilter'] = function () {
                     case 'td':
                     case 'th':
                     case 'caption':
-                        if(!node.children || !node.children.length){
+                        if (!node.children || !node.children.length) {
                             node.appendChild(UE.browser.ie11below ? UE.uNode.createText(' ') : UE.uNode.createElement('br'))
                         }
                         break;
                     case 'table':
-                        if(me.options.disabledTableInTable && tdParent(node)){
-                            node.parentNode.insertBefore(UE.uNode.createText(node.innerText()),node);
+                        if (me.options.disabledTableInTable && tdParent(node)) {
+                            node.parentNode.insertBefore(UE.uNode.createText(node.innerText()), node);
                             node.parentNode.removeChild(node)
                         }
                 }
@@ -192,7 +199,7 @@ UE.plugins['defaultfilter'] = function () {
                         if (val = node.getAttr('cdata_tag')) {
                             node.tagName = val;
                             node.appendChild(UE.uNode.createText(node.getAttr('cdata_data')));
-                            node.setAttr({cdata_tag: '', cdata_data: '','_ue_custom_node_':''});
+                            node.setAttr({cdata_tag: '', cdata_data: '', '_ue_custom_node_': ''});
                         }
                         break;
                     case 'a':
@@ -206,14 +213,14 @@ UE.plugins['defaultfilter'] = function () {
                         break;
                     case 'span':
                         val = node.getAttr('id');
-                        if(val && /^_baidu_bookmark_/i.test(val)){
+                        if (val && /^_baidu_bookmark_/i.test(val)) {
                             node.parentNode.removeChild(node)
                         }
                         //将color的rgb格式转换为#16进制格式
-                        if(me.getOpt('rgb2Hex')){
+                        if (me.getOpt('rgb2Hex')) {
                             var cssStyle = node.getAttr('style');
-                            if(cssStyle){
-                                node.setAttr('style',cssStyle.replace(/rgba?\(([\d,\s]+)\)/g,function(a,value){
+                            if (cssStyle) {
+                                node.setAttr('style', cssStyle.replace(/rgba?\(([\d,\s]+)\)/g, function (a, value) {
                                     var array = value.split(",");
                                     if (array.length > 3)
                                         return "";

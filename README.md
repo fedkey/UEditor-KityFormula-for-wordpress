@@ -32,6 +32,16 @@ UEditor-KityFormula for wordpress基于Ueditor,UEditor 是由百度「FEX前端�
 4. 解决百度动态地图无法插入<br />
 5. 随百度ueditor官方修复了一些安全漏洞<br />
 
+#### 版本: 2.04 发布时间 2021-5-8
+1. 增加图片删除功能; 
+2. 登陆用户验证,非登陆用户禁止使用插件直接访问,增强安全性
+3. 修复不能插入锚点的问题(ueditor本身bug)
+4. 修复部带多种html格式后不能直接复制粘贴进编辑器的问题
+5. 修复全屏编辑被wordpress左侧导航栏遮挡问题
+6. 修复百度地图在https不能显示的问题,并升级到api2.0,内置了我的ak,配置有限,为不影响使用,实际应用中请修改成自己的,修改方法见下面的教程
+
+
+
 ### 安装方法
 
 #### 一：git方式
@@ -47,3 +57,10 @@ UEditor-KityFormula for wordpress基于Ueditor,UEditor 是由百度「FEX前端�
 
 
 2、 登陆wordpress后台，用上传插件的方式进行安装，并启用。
+
+## 获取百度地图ak的方法
+第一步: 注册百度账号并登陆 https://lbsyun.baidu.com/
+第二步: 实名认证
+第三步：创建应用
+第四步：设置应用的api调用权限
+第五步：获取ak，并填写到插件中,位置为：该插件目录/ueditor/dialogs/map/show.html和 map.html,使用自己的ak替换掉我的即可

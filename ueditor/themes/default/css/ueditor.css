@@ -1900,4 +1900,4 @@ div.edui-box {
 }
 .edui-default  .edui-pastecontainer .edui-button  .edui-state-hover .edui-plaintxticon{
     background-position: -72px -34px;
-}
+}#wpcontent, #wpfooter{z-index: 999999999 !important;}

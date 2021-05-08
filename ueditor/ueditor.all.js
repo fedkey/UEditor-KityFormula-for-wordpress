@@ -3262,7 +3262,9 @@ var domUtils = dom.domUtils = {
                 case 'style':
                     node.style.cssText = '';
                     var val = node.getAttributeNode('style');
-                    !browser.ie && val && node.removeAttributeNode(val);
+                    if (val != null) {
+                        !browser.ie && val && node.removeAttributeNode(val);
+                    }
             }
             node.removeAttribute(ci);
         }
@@ -5276,7 +5278,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             } else {
                 start.appendChild(node);
             }
-            if (first.parentNode === this.endContainer) {
+            if (first.parentNode != null && first.parentNode === this.endContainer) {
                 this.endOffset = this.endOffset + length;
             }
             return this.setStartBefore(first);
@@ -12665,7 +12667,7 @@ UE.plugins['paragraph'] = function() {
                         } );
                     }
                     tmpRange.setEndAfter( tmpNode );
-                    
+
                     para = range.document.createElement( style );
                     if(attrs){
                         domUtils.setAttributes(para,attrs);
@@ -12677,7 +12679,7 @@ UE.plugins['paragraph'] = function() {
                     //需要内容占位
                     if(domUtils.isEmptyNode(para)){
                         domUtils.fillChar(range.document,para);
-                        
+
                     }
 
                     tmpRange.insertNode( para );
@@ -12801,7 +12803,7 @@ UE.plugins['paragraph'] = function() {
 
         },
         doDirectionality = function(range,editor,forward){
-            
+
             var bookmark,
                 filterFn = function( node ) {
                     return   node.nodeType == 1 ? !domUtils.isBookmarkNode(node) : !domUtils.isWhitespace(node);
@@ -17598,11 +17600,13 @@ UE.plugins['autofloat'] = function() {
 
             me.addListener('beforefullscreenchange', function (t, enabled){
                 if (enabled) {
+                    document.getElementById('adminmenumain').style.display='none';
                     unsetFloating();
                 }
             });
             me.addListener('fullscreenchanged', function (t, enabled){
                 if (!enabled) {
+                    document.getElementById('adminmenumain').style.display='block';
                     updateFloating();
                 }
             });
@@ -22723,7 +22727,7 @@ UE.plugins['formatmatch'] = function(){
      });
 
     function addList(type,evt){
-        
+
         if(browser.webkit){
             var target = evt.target.tagName == 'IMG' ? evt.target : null;
         }
@@ -22789,7 +22793,7 @@ UE.plugins['formatmatch'] = function(){
 
     me.commands['formatmatch'] = {
         execCommand : function( cmdName ) {
-          
+
             if(flag){
                 flag = 0;
                 list = [];
@@ -22798,7 +22802,7 @@ UE.plugins['formatmatch'] = function(){
             }
 
 
-              
+
             var range = me.selection.getRange();
             img = range.getClosedNode();
             if(!img || img.tagName != 'IMG'){
@@ -23907,135 +23911,135 @@ UE.plugin.register('autoupload', function (){
 });
 
 // plugins/autosave.js
-UE.plugin.register('autosave', function (){
-
-    var me = this,
-        //无限循环保护
-        lastSaveTime = new Date(),
-        //最小保存间隔时间
-        MIN_TIME = 20,
-        //auto save key
-        saveKey = null;
-
-    function save ( editor ) {
-
-        var saveData;
-
-        if ( new Date() - lastSaveTime < MIN_TIME ) {
-            return;
-        }
-
-        if ( !editor.hasContents() ) {
-            //这里不能调用命令来删除， 会造成事件死循环
-            saveKey && me.removePreferences( saveKey );
-            return;
-        }
-
-        lastSaveTime = new Date();
-
-        editor._saveFlag = null;
-
-        saveData = me.body.innerHTML;
-
-        if ( editor.fireEvent( "beforeautosave", {
-            content: saveData
-        } ) === false ) {
-            return;
-        }
-
-        me.setPreferences( saveKey, saveData );
-
-        editor.fireEvent( "afterautosave", {
-            content: saveData
-        } );
-
-    }
-
-    return {
-        defaultOptions: {
-            //默认间隔时间
-            saveInterval: 500
-        },
-        bindEvents:{
-            'ready':function(){
-
-                var _suffix = "-drafts-data",
-                    key = null;
-
-                if ( me.key ) {
-                    key = me.key + _suffix;
-                } else {
-                    key = ( me.container.parentNode.id || 'ue-common' ) + _suffix;
-                }
-
-                //页面地址+编辑器ID 保持唯一
-                saveKey = ( location.protocol + location.host + location.pathname ).replace( /[.:\/]/g, '_' ) + key;
-
-            },
-
-            'contentchange': function () {
-
-                if ( !saveKey ) {
-                    return;
-                }
-
-                if ( me._saveFlag ) {
-                    window.clearTimeout( me._saveFlag );
-                }
-
-                if ( me.options.saveInterval > 0 ) {
-
-                    me._saveFlag = window.setTimeout( function () {
-
-                        save( me );
-
-                    }, me.options.saveInterval );
-
-                } else {
-
-                    save(me);
-
-                }
-
-
-            }
-        },
-        commands:{
-            'clearlocaldata':{
-                execCommand:function (cmd, name) {
-                    if ( saveKey && me.getPreferences( saveKey ) ) {
-                        me.removePreferences( saveKey )
-                    }
-                },
-                notNeedUndo: true,
-                ignoreContentChange:true
-            },
-
-            'getlocaldata':{
-                execCommand:function (cmd, name) {
-                    return saveKey ? me.getPreferences( saveKey ) || '' : '';
-                },
-                notNeedUndo: true,
-                ignoreContentChange:true
-            },
-
-            'drafts':{
-                execCommand:function (cmd, name) {
-                    if ( saveKey ) {
-                        me.body.innerHTML = me.getPreferences( saveKey ) || '<p>'+domUtils.fillHtml+'</p>';
-                        me.focus(true);
-                    }
-                },
-                queryCommandState: function () {
-                    return saveKey ? ( me.getPreferences( saveKey ) === null ? -1 : 0 ) : -1;
-                },
-                notNeedUndo: true,
-                ignoreContentChange:true
-            }
-        }
-    }
-
-});
+// UE.plugin.register('autosave', function (){
+//
+//     var me = this,
+//         //无限循环保护
+//         lastSaveTime = new Date(),
+//         //最小保存间隔时间
+//         MIN_TIME = 20,
+//         //auto save key
+//         saveKey = null;
+//
+//     function save ( editor ) {
+//
+//         var saveData;
+//
+//         if ( new Date() - lastSaveTime < MIN_TIME ) {
+//             return;
+//         }
+//
+//         if ( !editor.hasContents() ) {
+//             //这里不能调用命令来删除， 会造成事件死循环
+//             saveKey && me.removePreferences( saveKey );
+//             return;
+//         }
+//
+//         lastSaveTime = new Date();
+//
+//         editor._saveFlag = null;
+//
+//         saveData = me.body.innerHTML;
+//
+//         if ( editor.fireEvent( "beforeautosave", {
+//             content: saveData
+//         } ) === false ) {
+//             return;
+//         }
+//
+//         me.setPreferences( saveKey, saveData );
+//
+//         editor.fireEvent( "afterautosave", {
+//             content: saveData
+//         } );
+//
+//     }
+//
+//     return {
+//         defaultOptions: {
+//             //默认间隔时间
+//             saveInterval: 500
+//         },
+//         bindEvents:{
+//             'ready':function(){
+//
+//                 var _suffix = "-drafts-data",
+//                     key = null;
+//
+//                 if ( me.key ) {
+//                     key = me.key + _suffix;
+//                 } else {
+//                     key = ( me.container.parentNode.id || 'ue-common' ) + _suffix;
+//                 }
+//
+//                 //页面地址+编辑器ID 保持唯一
+//                 saveKey = ( location.protocol + location.host + location.pathname ).replace( /[.:\/]/g, '_' ) + key;
+//
+//             },
+//
+//             'contentchange': function () {
+//
+//                 if ( !saveKey ) {
+//                     return;
+//                 }
+//
+//                 if ( me._saveFlag ) {
+//                     window.clearTimeout( me._saveFlag );
+//                 }
+//
+//                 if ( me.options.saveInterval > 0 ) {
+//
+//                     me._saveFlag = window.setTimeout( function () {
+//
+//                         save( me );
+//
+//                     }, me.options.saveInterval );
+//
+//                 } else {
+//
+//                     save(me);
+//
+//                 }
+//
+//
+//             }
+//         },
+//         commands:{
+//             'clearlocaldata':{
+//                 execCommand:function (cmd, name) {
+//                     if ( saveKey && me.getPreferences( saveKey ) ) {
+//                         me.removePreferences( saveKey )
+//                     }
+//                 },
+//                 notNeedUndo: true,
+//                 ignoreContentChange:true
+//             },
+//
+//             'getlocaldata':{
+//                 execCommand:function (cmd, name) {
+//                     return saveKey ? me.getPreferences( saveKey ) || '' : '';
+//                 },
+//                 notNeedUndo: true,
+//                 ignoreContentChange:true
+//             },
+//
+//             'drafts':{
+//                 execCommand:function (cmd, name) {
+//                     if ( saveKey ) {
+//                         me.body.innerHTML = me.getPreferences( saveKey ) || '<p>'+domUtils.fillHtml+'</p>';
+//                         me.focus(true);
+//                     }
+//                 },
+//                 queryCommandState: function () {
+//                     return saveKey ? ( me.getPreferences( saveKey ) === null ? -1 : 0 ) : -1;
+//                 },
+//                 notNeedUndo: true,
+//                 ignoreContentChange:true
+//             }
+//         }
+//     }
+//
+// });
 
 // plugins/charts.js
 UE.plugin.register('charts', function (){
@@ -25271,7 +25275,7 @@ UE.ui = baidu.editor.ui = {};
         domUtils = baidu.editor.dom.domUtils,
         UIBase = baidu.editor.ui.UIBase,
         uiUtils = baidu.editor.ui.uiUtils;
-    
+
     var Mask = baidu.editor.ui.Mask = function (options){
         this.initOptions(options);
         this.initUIBase();
@@ -25567,7 +25571,7 @@ UE.ui = baidu.editor.ui = {};
         }
     };
     utils.inherits(Popup, UIBase);
-    
+
     domUtils.on( document, 'mousedown', function ( evt ) {
         var el = evt.target || evt.srcElement;
         closeAllPopup( evt,el );
@@ -25663,7 +25667,7 @@ UE.ui = baidu.editor.ui = {};
     var utils = baidu.editor.utils,
         uiUtils = baidu.editor.ui.uiUtils,
         UIBase = baidu.editor.ui.UIBase;
-    
+
     var TablePicker = baidu.editor.ui.TablePicker = function (options){
         this.initOptions(options);
         this.initTablePicker();
@@ -25747,7 +25751,7 @@ UE.ui = baidu.editor.ui = {};
     var browser = baidu.editor.browser,
         domUtils = baidu.editor.dom.domUtils,
         uiUtils = baidu.editor.ui.uiUtils;
-    
+
     var TPL_STATEFUL = 'onmousedown="$$.Stateful_onMouseDown(event, this);"' +
         ' onmouseup="$$.Stateful_onMouseUp(event, this);"' +
         ( browser.ie ? (
@@ -25756,7 +25760,7 @@ UE.ui = baidu.editor.ui = {};
         : (
         ' onmouseover="$$.Stateful_onMouseOver(event, this);"' +
         ' onmouseout="$$.Stateful_onMouseOut(event, this);"' ));
-    
+
     baidu.editor.ui.Stateful = {
         alwalysHoverable: false,
         target:null,//目标元素和this指向dom不一样
@@ -27381,7 +27385,7 @@ UE.ui = baidu.editor.ui = {};
         setValue : function(value){
             this._value = value;
         }
-        
+
     };
     utils.inherits(MenuButton, SplitButton);
 })();

@@ -1,13 +1,17 @@
 <?php
+//登陆用户验证,非登陆用户禁止访问
+require_once ("../../../../../wp-load.php");
+if (!is_user_logged_in()) exit();
+//验证是否post
+$method = $_SERVER['REQUEST_METHOD'];
+
 header('Access-Control-Allow-Origin: *'); //设置允许跨域访问
 header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //设置允许的跨域header
 date_default_timezone_set("Asia/chongqing");
 error_reporting(E_ERROR);
 header("Content-Type: text/html; charset=utf-8");
-
 $CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents("config.json")), true);
 $action = $_GET['action'];
-
 switch ($action) {
     case 'config':
         $result =  json_encode($CONFIG);
@@ -36,6 +40,11 @@ switch ($action) {
     /* 抓取远程文件 */
     case 'catchimage':
         $result = include("action_crawler.php");
+        break;
+
+    /* 删除图片命令处理 */
+    case 'deleteimage':
+        $result = include('action_delete.php');
         break;
 
     default:

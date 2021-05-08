@@ -363,7 +363,8 @@
 		,outputXssFilter: true
 		// xss过滤白名单 名单来源: https://raw.githubusercontent.com/leizongmin/js-xss/master/lib/default.js
 		,whitList: {
-			a:      ['target', 'href', 'title', 'class', 'style'],
+        	//添加name,使之可插入锚点
+			a:      ['target', 'href', 'title', 'class', 'style','name','id'],
 			abbr:   ['title', 'class', 'style'],
 			address: ['class', 'style'],
 			area:   ['shape', 'coords', 'href', 'alt'],
@@ -403,8 +404,8 @@
 			//阻止iframe被清理、百度地图无法加入动态地图
 			iframe: ['frameborder','border','marginwidth','marginheight','width','height','src','id'],
 			//增加_url，防止视频地址被清空 2017-12-10
-			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex','_url'],
-			//增加插入视频  2017-10-2 yangshengliang.com 
+			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex','_url','anchorname'],
+			//增加插入视频  2017-10-2 yangshengliang.com
             insertvideo:['url', 'id', 'width', 'height'],
 			ins:    ['datetime'],
 			li:     ['class', 'style'],
