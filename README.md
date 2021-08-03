@@ -48,14 +48,6 @@
 
 
 
-
-### 交流群
-> 加群问题:怎么知道该群的
->>答案：gitee
-#### QQ群   号： 866703507<br>
-  ![qq群二维码](ueditor-wordpress交流群群二维码.png  "QQ群   号： 866703507")
-
-
 ### 教程
 *  [安装方法见wiki文档](https://gitee.com/fedkey/UEditor-KityFormula-for-wordpress/wikis/%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95?sort_id=3992730)
 * [获取百度地图ak的方法见wiki文档](https://gitee.com/fedkey/UEditor-KityFormula-for-wordpress/wikis/%E7%94%B3%E8%AF%B7%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E7%9A%84%E6%96%B9%E6%B3%95?sort_id=3992715)
