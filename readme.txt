@@ -85,15 +85,7 @@ License: GPLv2 or later
 
 </details>
 
-###Communication group
 
->Add group problem: how to know the group
-
->>Answer: gitee
-
-####QQ group No.: 866703507 < br >
-
-![ QQ group QR code] (ueeditor WordPress communication group QR code. PNG "QQ group No.: 866703507")
 
 ###Tutorial
 
