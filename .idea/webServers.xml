@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="84e30083-9c46-4ad0-b4a2-77b93bb2573d" name="182.92.0.216">
+        <fileTransfer rootFolder="/data/wwwroot/www.yangshengliang.com/wp-content/plugins/UEditor-KityFormula-for-wordpress" accessType="SFTP" host="182.92.0.216" port="2020" sshConfigId="ddc1ae54-4c0c-441f-ad4c-16beb8df0b60" sshConfig="root@182.92.0.216:2020 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
